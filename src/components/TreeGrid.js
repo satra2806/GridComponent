@@ -3,6 +3,20 @@ import { useTable, useExpanded } from 'react-table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Table({ columns: userColumns, data }) {
+    const defaultExpanded = React.useMemo(() => {
+        const expandAll = [];
+        const expandRows = (rows) => {
+            rows.forEach(row => {
+                expandAll.push(row.id); // Pushing row IDs
+                if (row.subRows) {
+                    expandRows(row.subRows); // Recursively expanding child rows if present
+                }
+            });
+        };
+        expandRows(data);
+        return expandAll;
+    }, [data]);
+//   console.log(defaultExpanded ,"satra");
     const {
         getTableProps,
         getTableBodyProps,
@@ -14,12 +28,14 @@ function Table({ columns: userColumns, data }) {
         {
             columns: userColumns,
             data,
-            defaultExpanded:true,
+            // defaultExpanded
+            initialState: { expanded: defaultExpanded }
+
             // initialState: { expanded: {"0": true , "0.0" : true, "0.0.0" : true, "0.0.0.0": true} },
         },
         useExpanded // Use the useExpanded plugin hook
     )
-
+    
     // Render the UI for your table
     return (
         <div>
@@ -175,7 +191,7 @@ function ExpandableTableComponent() {
     ],
   },
 ]
-console.log(JSON.stringify(data));
+// console.log(JSON.stringify(data));
 return (
     <Table columns={columns} data={data} />
 )
