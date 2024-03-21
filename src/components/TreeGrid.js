@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTable, useExpanded } from 'react-table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -29,12 +29,18 @@ function Table({ columns: userColumns, data }) {
             columns: userColumns,
             data,
             // defaultExpanded
-            initialState: { expanded: defaultExpanded }
+            // initialState: { expanded: defaultExpanded }
 
             // initialState: { expanded: {"0": true , "0.0" : true, "0.0.0" : true, "0.0.0.0": true} },
         },
         useExpanded // Use the useExpanded plugin hook
     )
+
+    useEffect(() => {
+        let expandAll = document.getElementById('expand-all-rows');
+        expandAll.click();        
+
+    }, [])
     
     // Render the UI for your table
     return (
@@ -81,7 +87,7 @@ function ExpandableTableComponent() {
             {
                 id: 'expander', // Make sure it has an ID
                 Header: ({ getToggleAllRowsExpandedProps, isAllRowsExpanded }) => (
-                    <span {...getToggleAllRowsExpandedProps()}>
+          <span {...getToggleAllRowsExpandedProps()} id={"expand-all-rows"}>
                         {isAllRowsExpanded ? '👇' : '👉'}
                     </span>
                 ),
