@@ -149,7 +149,7 @@ function ExpandableTableComponent() {
         type: 'Transforn',
         product: 'ICAT-ATLAS-SIMCORP-API',
         fab: 'fnd-crtfct-trns-API',
-        description: 'dgfhdgdjhfgdgfjdgfjhdgsfhjgdsjhfgdjhgfhdgfjhdgfjhgdjfgdjhgfjdgfjdgfjgdjfgdjfgjdgfjdgfjdggfjhdfjhdgfjhdgfjhgdhfgdhjfgjhdgfhjdgfhjdgfjhdgfhjdgfjhdgfhjgdhfjgdhfgdhjgfhdgfeyejjjjfjffjhgdjfhgdjhfgdjhgfjhdgfjhdgfjhdgfjhgdjhfgdjhfgdhgfjhdgfjdgfjhdgfjhdgfjgdjhfgdjhfgjdh',
+        description: 'Test',
         subRows: [
           {
             id: 'ed_cntrprty',
@@ -187,9 +187,23 @@ function ExpandableTableComponent() {
             ],
           },
         ],
-      },
+      }
     ],
-  },
+  },      {
+    id: 'Transformation',
+    type: 'Transforn',
+    product: 'ICAT-ATLAS-SIMCORP-API',
+    fab: 'fnd-crtfct-trns-API',
+    description: 'Test',
+    subRows: [
+      {
+        id: 'ed_cntrprty',
+        type: 'Data Element',
+        product: 'ICHT-AladdinAtlas Interface',
+    fab: 'Atlas_Pos_Trans',
+    description: null,
+      }]
+    }
 ]
 // console.log(JSON.stringify(data));
 return (
