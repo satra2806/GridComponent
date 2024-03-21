@@ -39,7 +39,14 @@ function Table({ columns: userColumns, data }) {
                         return (
                             <tr {...row.getRowProps()}>
                                 {row.cells.map(cell => {
-                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                    return <td {...cell.getCellProps()}                    
+                                    style={{
+                                        padding: '8px',
+                                        borderBottom: '1px solid #ddd',
+                                        maxWidth: '250px', // Example max width
+                                        overflowWrap: 'break-word', // Enable word-wrap
+                                      }}
+                                    >{cell.render('Cell')}</td>
                                 })}
                             </tr>
                         )
@@ -104,7 +111,7 @@ function ExpandableTableComponent() {
                                 </p>
                             </div> : cell.value;
                         },
-                        width: 100,
+                        width: '100px',
 
                     }
                 ],
